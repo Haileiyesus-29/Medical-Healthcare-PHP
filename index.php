@@ -1,5 +1,5 @@
 <?php
-$GLOBALS['loggedIn'] = isset($_COOKIE['loggedin_user']);
+session_start();
 
 $routes = [];
 
@@ -11,7 +11,8 @@ $routes['GET']['/^\/users\/(\d+)$/'] = function ($matches) {
 
 // Define routes with request types
 $routes['GET']['/^\/$/'] = function () {
-    if ($GLOBALS['loggedIn']) {
+    // if (isset($_SESSION['loggedin'])) {
+    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == "true"){
         include './pages/main.php';
     } else {
         include './pages/home.php';
@@ -21,6 +22,14 @@ $routes['GET']['/^\/$/'] = function () {
 // Define dynamic routes
 $routes['GET']['/^\/login$/'] = function () {
     include './pages/login.php';
+};
+// $routes['POST']['/^\/login$/'] = function () {
+//     $_SESSION['loggedin'] = "true";
+//     header('Location: /');
+// };
+
+$routes['GET']['/^\/doctor$/'] = function () {
+    include './pages/doctor.php';
 };
 
 $routes['GET']['/^\/signup$/'] = function () {
@@ -55,6 +64,16 @@ $routes['GET']['/^\/404$/'] = function () {
 $routes['POST']['/^\/404$/'] = function () {
     echo "Page not found (POST)";
 };
+
+$routes['GET']['/^\/logout$/'] = function () {
+    unset($_SESSION['loggedin']);
+    header('Location: /login');
+};
+
+
+
+
+
 
 run();
 

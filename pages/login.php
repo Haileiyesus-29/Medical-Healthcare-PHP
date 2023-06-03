@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../public/css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <title>Login | Medical Healthcare</title>
-    <script defer src="../Scripts/loginControl.js"></script>
-    <script defer src="../script.js"></script>
-  </head>
-  <body>
+<?php
+  include 'layout/html.php';
+?>
     <!-- HEADER PAGE STARTS HERER -->
     <?php
       include('layout/header.php');
@@ -25,7 +13,7 @@
         <span class="highlight"> to your healthy </span><br />
         life at &nbsp; <span class="highlight"> the best</span> hospital
       </div>
-      <form action="login" method="post" class="login-form">
+      <form action="../controllers/LoginController.php" method="post" class="login-form">
         <div class="email-container">
           <label for="email">Email</label>
           <input
@@ -49,7 +37,7 @@
         <div class="submit-container">
           <input type="submit" value="LOGIN" id="submit" class="submit-btn" />
           <div class="no-account">
-            didn't have an account? <a href="signup.html">register</a>
+            didn't have an account? <a href="/signup">register</a>
           </div>
         </div>
       </form>
@@ -57,6 +45,9 @@
     <?php
       include('layout/footer.php'); 
     ?>
+        <script defer src="../public/js/loginControl.js"></script>
+        <script defer src="../public/js/script.js"></script>
+
     <!-- <script src="script.js"></script> -->
   </body>
 </html>

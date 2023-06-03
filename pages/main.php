@@ -1,29 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../public/css/style.css" />
-    <link 
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <title>Welcome | Medical Healthcare</title>
-    <script defer src="./Scripts/testimonials.js"></script>
-    <script defer src="./script.js"></script>
-  </head>
-  <body>
     <?php
-      include('layout/header.php')
+      include 'layout/html.php';
     ?>
+      <?php
+        include('layout/header.php');
+
+        $user = $_SESSION['user_info'];
+      ?>
+
 
     <!-- MAIN PAGE STARTS HERE -->
     <main>
       <div class="home-container">
         <div class="home-section home-section-left">
           <div class="home-profile-img">
-            <img src="../user.png" width="50" alt="img" />
-            <a href="#" class="home-profile-name">John Doe</a>
+            <img src="../public/images/user.png" width="50" alt="img" />
+            <a href="/profile" class="home-profile-name">
+              <?php
+                   echo $user['first_name']." ".$user['last_name'];
+               ?>
+            </a>
           </div>
           <a href="/messages" class="home-profile-messages"
             >Messages <span class="stats">12</span></a
@@ -38,11 +33,12 @@
             >Follower <span class="stats">12</span></a
           > 
         </div>
+        
         <div class="home-section home-section-middle">
           <div class="home-feed-container">
             <div class="home-feed-profile-link">
               <img
-                src="../user.png"
+                src="../public/images/user.png"
                 alt="img"
                 width="40"
                 class="feed-post-img"
@@ -55,7 +51,7 @@
               eius odio sequi!
             </div>
             <div class="home-feed-post-picture">
-              <img src="../stethoscope.jpg" alt="img" />
+              <img src="../public/images/stethoscope.jpg" alt="img" />
             </div>
             <div class="home-feed-post-status">
               <a href="#" class="like"
@@ -72,7 +68,7 @@
           <div class="home-feed-container">
             <div class="home-feed-profile-link">
               <img
-                src="../user.png"
+                src="../public/images/user.png"
                 alt="img"
                 width="40"
                 class="feed-post-img"
@@ -85,7 +81,7 @@
               eius odio sequi!
             </div>
             <div class="home-feed-post-picture">
-              <img src="../stethoscope.jpg" alt="img" />
+              <img src="../public/images/stethoscope.jpg" alt="img" />
             </div>
             <div class="home-feed-post-status">
               <a href="#" class="like"
@@ -102,7 +98,7 @@
           <div class="home-feed-container">
             <div class="home-feed-profile-link">
               <img
-                src="../user.png"
+                src="../public/images/user.png"
                 alt="img"
                 width="40"
                 class="feed-post-img"
@@ -115,7 +111,7 @@
               eius odio sequi!
             </div>
             <div class="home-feed-post-picture">
-              <img src="../stethoscope.jpg" alt="img" />
+              <img src="../public/images/stethoscope.jpg" alt="img" />
             </div>
             <div class="home-feed-post-status">
               <a href="#" class="like"
@@ -131,14 +127,17 @@
           </div>
           <a href="#" class="next-feed-btn btn">See more &rarr;</a>
         </div>
-        <div class="home-section home-section-right home-post-container">
-          <p>Try post something now!</p>
-          <form action="#">
-            <textarea name="input-text" id="home-post-content"></textarea>
-            <input type="file" name="post-picture" id="post-picture" />
-            <input type="submit" value="POST" />
-          </form>
-        </div>
+        <?php
+          if($_SESSION['user_info'] == 'doctor') 
+            echo '<div class="home-section home-section-right home-post-container">
+            <p>Try post something now!</p>
+            <form action="#">
+              <textarea name="input-text" id="home-post-content"></textarea>
+              <input type="file" name="post-picture" id="post-picture" />
+              <input type="submit" value="POST" />
+            </form>
+          </div>';
+        ?>
       </div>
     </main>
     <!-- FOOTER PAGE STARTS HERE -->

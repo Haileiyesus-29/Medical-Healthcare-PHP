@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../public/css/style.css"  />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <title>Sign Up | Medical Healthcare</title>
-    <script defer src="../public/js/formControl.js"></script>
-    <script defer src="../public/js/script.js"></script>
-  </head>
-  <body>
+<?php
+  include 'layout/html.php';
+?>
     <!-- HEADER PAGE STARTS HERER -->
     <?php
       include('layout/header.php');
@@ -24,9 +12,7 @@
         <span class="highlight"> to your healthy </span><br />
         life at &nbsp; <span class="highlight"> the best</span> hospital
       </div>
-      <?php 
-        if($e) echo '<div style="text-align: center; color: red;">'.$e->getMessage().'</div>';
-      ?>
+    
       <form action="../controllers/RegisterController.php" method="post" class="login-form signup-form">
           <div class="signup-firstname">
               <label for="firstname">First Name</label>
@@ -51,9 +37,9 @@
               <label for="female" class="gender-labels">Female</label>
           </div>
           <div class="signup-employee">
-              <label for="employee">Employee?</label>
-              <input type="checkbox" name="is_employee" id="employee" class="employee-input hidden" value="true" />
-              <label for="employee" class="employee-label "><span class="checkbox-ball "></span></label>
+              <label for="employee">Doctor?</label>
+              <input type="checkbox" name="account" id="employee" class="employee-input hidden " value="user" />
+              <label for="account" class="employee-label "><span class="checkbox-ball "></span></label>
           </div>
           <div class="signup-password">
               <label for="password">Password</label>
@@ -81,6 +67,9 @@
     <?php
       include('layout/footer.php');
     ?>
+       <script  src="../../public/js/formControl.js"></script>
+    <script  src="../../public/js/script.js"></script>
+
     <!-- <script src="script.js"></script> -->
   </body>
 </html>

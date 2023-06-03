@@ -1,65 +1,28 @@
 const genderRadios = document.querySelectorAll('.gender-labels-hidden')
 const genderInputs = document.querySelectorAll('.gender-inputs')
-const loginForm = document.querySelector('.login-form')
 const employeeRadio = document.querySelector('.signup-employee #employee')
 const employeeLabel = document.querySelector('.employee-label')
-const signupForm = document.querySelector('.signup-form')
+// const employeeInput = document.querySelector('.signup_employee .employee-input')
+const employeeInput = document.querySelector('#employee')
 const employeeCheckbox = document.querySelector(
    '.signup-employee .checkbox-ball'
 )
-
-const User = function (email, password) {
-   this.email = email
-   this.password = password
-}
 
 genderInputs.forEach(input =>
    input.addEventListener('change', () => {
       genderRadios.forEach(el => el.classList.toggle('radio-checked'))
    })
 )
-employeeRadio.addEventListener('change', () => {
+employeeRadio.addEventListener('change', e => {
+   if (employeeInput.value === 'user') employeeInput.value = 'doctor'
+   else employeeInput.value = 'user'
    employeeLabel.classList.toggle('active')
    employeeCheckbox.classList.toggle('active')
 })
-
-signupForm.addEventListener('submit', e => {
-   let elements = [
-      signupForm.querySelector('.firstname'),
-      signupForm.querySelector('.lastname'),
-      // signupForm.querySelector('.address'),
-      signupForm.querySelector('.phone'),
-      signupForm.querySelector('.password'),
-      signupForm.querySelector('.email'),
-   ]
-   let errors = []
-   if (elements[0].value.length < 3) {
-      elements[0].style.border = '2px solid red'
-      errors.push('First Name must contain atleast 3 characters.')
-   } else elements[0].style.border = 'none'
-
-   if (elements[1].value.length < 3) {
-      elements[1].style.border = '2px solid red'
-      errors.push('Last name must contain atleast 3 characters')
-   } else elements[1].style.border = 'none'
-
-   if (!Number(elements[2].value)) {
-      elements[2].style.border = '2px solid red'
-      errors.push('Invalid phone number')
-   } else elements[2].style.border = 'none'
-
-   if (elements[3].value.length < 6) {
-      elements[3].style.border = '2px solid red'
-      errors.push('Password must be atleast 6 characters long')
-   } else elements[3].style.border = 'none'
-
-   if (!isAvailable(elements[4].value)) {
-      elements[4].style.border = '2px solid red'
-      errors.push('Email already exists')
-   } else elements[4].style.border = 'none'
-
-   if (errors.length) {
-      e.preventDefault()
-      alert(`${errors.map(e => e + '\n')}`)
-   }
+employeeLabel.addEventListener('click', e => {
+   if (employeeInput.value === 'user') employeeInput.value = 'doctor'
+   else employeeInput.value = 'user'
+   employeeLabel.classList.toggle('active')
+   employeeCheckbox.classList.toggle('active')
+   s
 })
