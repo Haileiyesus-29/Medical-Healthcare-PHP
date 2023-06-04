@@ -4,6 +4,23 @@
     <?php
       include('layout/header.php');
       $user = $_SESSION['user_info'];
+
+    if(isset($doctor_id)) {
+      global $user;
+      $path = dirname(__DIR__);
+      include_once $path.'/config/database.php';
+      $stmt = $connection->prepare("SELECT * FROM users WHERE id = ?");
+      $stmt->bind_param("i", $doctor_id);
+      $stmt->execute();
+      
+      $result = $stmt->get_result();
+      $doctor = $result->fetch_assoc();
+      
+      $stmt->close();
+    }
+    if(isset($doctor)) $user = $doctor
+    // print_r($doctor);
+
    ?>
     <main>
       <section class="profile">

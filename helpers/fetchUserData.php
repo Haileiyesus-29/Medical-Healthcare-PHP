@@ -4,12 +4,15 @@ if(session_status() == PHP_SESSION_NONE) {
 }
 
 
-require_once '../config/database.php';
 
-function fetchUserDataByEmail($email) {
+
+function fetchUserDataById($id) {
+   $path = dirname(__DIR__);
+   include $path.'/config/database.php';
+   
    global $connection;
-   $stmt = $connection->prepare("SELECT * FROM users WHERE email = ?");
-   $stmt->bind_param("s", $email);
+   $stmt = $connection->prepare("SELECT * FROM users WHERE id = ?");
+   $stmt->bind_param("i", $id);
    $stmt->execute();
 
    $result = $stmt->get_result();

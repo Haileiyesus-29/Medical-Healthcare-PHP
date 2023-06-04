@@ -45,7 +45,6 @@
     <?php
       include('layout/footer.php'); 
     ?>
-        <script defer src="../public/js/loginControl.js"></script>
         <script defer src="../public/js/script.js"></script>
 
     <!-- <script src="script.js"></script> -->

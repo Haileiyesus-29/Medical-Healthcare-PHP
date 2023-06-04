@@ -3,10 +3,10 @@ session_start();
 
 $routes = [];
 
-$routes['GET']['/^\/users\/(\d+)$/'] = function ($matches) {
-    $id = $matches[1];
+$routes['GET']['/^\/profile\/(\d+)$/'] = function ($matches) {
     // Use the retrieved dynamic "id" value as needed
-    echo "User ID: " . $id;
+    $doctor_id = $matches[1];
+    include './pages/profile.php';
 };
 
 // Define routes with request types

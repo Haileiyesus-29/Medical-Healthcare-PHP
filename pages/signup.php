@@ -36,11 +36,18 @@
               <label for="female" class="gender-labels-hidden"></label>
               <label for="female" class="gender-labels">Female</label>
           </div>
-          <div class="signup-employee">
+          <!-- <div class="signup-employee">
               <label for="employee">Doctor?</label>
-              <input type="checkbox" name="account" id="employee" class="employee-input hidden " value="user" />
+              <input type="checkbox" name="account" id="employee" class="employee-input hidden" value="doctor" />
               <label for="account" class="employee-label "><span class="checkbox-ball "></span></label>
-          </div>
+          </div> -->
+            <div class="signup-employee">
+                <label for="account">Account</label>
+                <select name="account" id="account" class="account">
+                <option value="user">User</option>
+                <option value="doctor">Doctor</option>
+                </select>
+            </div>
           <div class="signup-password">
               <label for="password">Password</label>
               <input type="password" id="password" name="password" class="password" placeholder="**********" required />

@@ -601,6 +601,18 @@ main {
    transition: all 0.15s ease;
 }
 
+.signup-employee select {
+   border: none;
+   width: 30%;
+   box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.322);
+   border-radius: 5px;
+   padding: 0px 5px;
+   font-size: 1rem;
+}
+/* .signup-employee select:focus {
+   outline: none;
+} */
+
 /* /////////////////////////////////////////////////////////////
 //////////////    HOME PAGE STYLING    ////////////////////////
 ////////////////////////////////////////////////////////////////*/

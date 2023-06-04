@@ -1,6 +1,10 @@
    <!-- HEADER PAGE STARTS HERER -->
    <?php
+
    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 'true') {
+    $doctorNavLink = '';
+    if($_SESSION['user_info']['account'] == 'user') $doctorNavLink = '<a href="/doctor" class="nav-links">DOCTORS</a>';
+
     echo '<header class="in-pages">
     <div class="nav-icon">
       <!-- <i class="fa-solid fa-xmark"></i> -->
@@ -10,9 +14,7 @@
       <a href="/" class="main-title"
         ><i class="fa-solid fa-stethoscope"></i>&nbsp; Medical Healthcare</a
       >
-      <a href="/" class="nav-links">HOME</a>
-      <a href="/doctor" class="nav-links">DOCTORS</a>
-      <a href="/pharmacy" class="nav-links">PHARMACY</a>
+      <a href="/" class="nav-links">HOME</a>'.$doctorNavLink.'<a href="/pharmacy" class="nav-links">PHARMACY</a>
       <a href="/profile" class="nav-links">PROFILE</a>
       <a href="/about" class="nav-links active">ABOUT</a>
       <a href="/logout" class="nav-links btn login-link center-inside"

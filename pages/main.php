@@ -36,105 +36,56 @@
         
         <div class="home-section home-section-middle">
           <div class="home-feed-container">
+
+            <?php
+// Call the fetchAllPosts() function to get all posts with author information
+include('E:/MedicalHealthcare/MedicalHealthcarePHP/helpers/fetchAllPosts.php');
+$posts = fetchAllPosts();
+
+// Loop through each post and render the HTML
+foreach ($posts as $post) {
+    // $path = dirname(__DIR__);
+
+    $authorFullName = $post['first_name'] . ' ' . $post['last_name'];
+    $authorImage = $post['image'];
+    $postImage = $post['image'];
+    if($post['image'] == null) $postImage = '../public/images/stethoscope.jpg';
+    $postContent = $post['content'];
+    // Render the HTML for the post
+    $image = '<img src="'. $postImage.'" alt="img" />';
+
+    echo '
+        <div class="home-feed-container">
             <div class="home-feed-profile-link">
-              <img
-                src="../public/images/user.png"
-                alt="img"
-                width="40"
-                class="feed-post-img"
-              />
-              <a href="#" class="feed-post-profile">John Doe</a>
+                <img src="../public/images/user.png" alt="img" width="40" class="feed-post-img" />
+                <a href="profile/'.$post['author_id'].'" class="feed-post-profile">' . $authorFullName . '</a>
             </div>
-            <div class="home-feed-post-text">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Excepturi animi sunt deleniti enim provident maxime sapiente, non
-              eius odio sequi!
-            </div>
-            <div class="home-feed-post-picture">
-              <img src="../public/images/stethoscope.jpg" alt="img" />
-            </div>
+            <div class="home-feed-post-text">' . $postContent . '</div>
+            <div class="home-feed-post-picture">'.
+                $image
+            .'</div>
             <div class="home-feed-post-status">
-              <a href="#" class="like"
-                ><span class="like-count">120</span> &uArr;
-              </a>
-              <a href="#" class="unlike"
-                ><span class="unlike-count">22</span> &dArr;
-              </a>
-              <a href="#" class="comment"
-                ><span class="comment-count">42</span> comments
-              </a>
+                <a href="#" class="like"><span class="like-count">120</span> &uArr;</a>
+                <a href="#" class="unlike"><span class="unlike-count">22</span> &dArr;</a>
+                <a href="#" class="comment"><span class="comment-count">42</span> comments</a>
             </div>
+        </div>
+    ';
+}
+?>
           </div>
-          <div class="home-feed-container">
-            <div class="home-feed-profile-link">
-              <img
-                src="../public/images/user.png"
-                alt="img"
-                width="40"
-                class="feed-post-img"
-              />
-              <a href="#" class="feed-post-profile">John Doe</a>
-            </div>
-            <div class="home-feed-post-text">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Excepturi animi sunt deleniti enim provident maxime sapiente, non
-              eius odio sequi!
-            </div>
-            <div class="home-feed-post-picture">
-              <img src="../public/images/stethoscope.jpg" alt="img" />
-            </div>
-            <div class="home-feed-post-status">
-              <a href="#" class="like"
-                ><span class="like-count">120</span> &uArr;
-              </a>
-              <a href="#" class="unlike"
-                ><span class="unlike-count">22</span> &dArr;
-              </a>
-              <a href="#" class="comment"
-                ><span class="comment-count">42</span> comments
-              </a>
-            </div>
-          </div>
-          <div class="home-feed-container">
-            <div class="home-feed-profile-link">
-              <img
-                src="../public/images/user.png"
-                alt="img"
-                width="40"
-                class="feed-post-img"
-              />
-              <a href="#" class="feed-post-profile">John Doe</a>
-            </div>
-            <div class="home-feed-post-text">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Excepturi animi sunt deleniti enim provident maxime sapiente, non
-              eius odio sequi!
-            </div>
-            <div class="home-feed-post-picture">
-              <img src="../public/images/stethoscope.jpg" alt="img" />
-            </div>
-            <div class="home-feed-post-status">
-              <a href="#" class="like"
-                ><span class="like-count">120</span> &uArr;
-              </a>
-              <a href="#" class="unlike"
-                ><span class="unlike-count">22</span> &dArr;
-              </a>
-              <a href="#" class="comment"
-                ><span class="comment-count">42</span> comments
-              </a>
-            </div>
-          </div>
+
+
           <a href="#" class="next-feed-btn btn">See more &rarr;</a>
         </div>
         <?php
-          if($_SESSION['user_info'] == 'doctor') 
+          if($_SESSION['user_info']['account'] == 'doctor') 
             echo '<div class="home-section home-section-right home-post-container">
             <p>Try post something now!</p>
-            <form action="#">
-              <textarea name="input-text" id="home-post-content"></textarea>
+            <form action="../controllers/PostController.php" method="POST">
+              <textarea name="content" id="home-post-content"></textarea>
               <input type="file" name="post-picture" id="post-picture" />
-              <input type="submit" value="POST" />
+              <input type="submit" />
             </form>
           </div>';
         ?>
