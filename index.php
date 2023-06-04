@@ -40,7 +40,9 @@ $routes['GET']['/^\/about$/'] = function () {
     include './pages/about.php';
 };
 
-$routes['GET']['/^\/chat$/'] = function () {
+$routes['GET']['/^\/messages\/(\d+)$/'] = function ($matches) {
+    // Use the retrieved dynamic "id" value as needed
+    $contact_id = $matches[1];
     include './pages/chat.php';
 };
 

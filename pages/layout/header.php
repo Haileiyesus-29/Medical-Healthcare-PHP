@@ -25,7 +25,6 @@
    } else {
     echo '<header class="landing-page">
     <div class="nav-icon">
-      <!-- <i class="fa-solid fa-xmark"></i> -->
       <i class="fa-solid fa-bars"></i>
     </div>
     <nav class="nav-links-container">

@@ -48,6 +48,11 @@
               <div class="profile__field">Address</div>
               <div class="profile__status"><?php echo $user['address']; ?></div>
             </div>
+            <?php
+              if($_SESSION['user_info']['id'] !== $user['id'])
+                echo '<a href="/messages/'.$user['id'].'" class="contactButton btn">Contact now &UpperRightArrow;</a>';
+            ?>
+            
           </div>
         </div>
       </section>

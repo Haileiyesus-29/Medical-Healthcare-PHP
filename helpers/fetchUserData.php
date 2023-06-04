@@ -10,7 +10,7 @@ function fetchUserDataById($id) {
    $path = dirname(__DIR__);
    include $path.'/config/database.php';
    
-   global $connection;
+   $connection;
    $stmt = $connection->prepare("SELECT * FROM users WHERE id = ?");
    $stmt->bind_param("i", $id);
    $stmt->execute();
